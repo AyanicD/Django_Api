@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from first_proj.routers import v1_router
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/',include('blog.urls')),
-    path('api/',include('device_api.urls'))
+    path('api/v1/', include(v1_router.urls)),
+    path('blog/',include('blog.urls'))
 ]
