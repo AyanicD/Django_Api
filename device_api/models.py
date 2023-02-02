@@ -6,8 +6,8 @@ class Employee(models.Model):
     email = models.EmailField()
 
 class Device(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,unique=True)
     type = models.CharField(max_length=25)
     history = models.TextField(blank=True)
     timestamp = models.DateTimeField(default=timezone.now)
-    used_by = models.ForeignKey(Employee, blank=True, null=True, on_delete=models.SET_NULL)
+    employee = models.ForeignKey(Employee, blank=True, null=True, on_delete=models.SET_NULL)

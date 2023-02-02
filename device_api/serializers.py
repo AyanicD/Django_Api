@@ -29,4 +29,21 @@ class EmployeeSerializer(BaseModelSerializer):
 class DeviceSerializer(BaseModelSerializer):
     class Meta:
         model = Device
-        fields = "__all__"
+        fields = (
+            'id',
+            'name',
+            'type',
+            'history',
+            'timestamp',
+            'employee', 
+        )
+class DetailSerializer(DeviceSerializer):
+    employee_detail = serializers.SerializerMethodField()
+    class Meta:
+        model = Device
+        fields = DeviceSerializer.Meta.fields + (
+            'employee_detail',
+        )  
+
+    def get_employee_detail(self, device):
+        return EmployeeSerializer(device.employee).data
