@@ -94,7 +94,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         print(emp_list)
         emp_list = EmployeeSerializer(emp_list,many=True)
         return Response(emp_list.data)
-        
+
     @action(methods=["GET"], detail=False)
     def gettop(self,request):
         num = request.data['num']
@@ -186,15 +186,6 @@ class DeviceViewSet(viewsets.ModelViewSet):
         return Response(dev_list.data)
     
     @action(methods=["GET"], detail=False)
-    def alltypes(self, request):
-        device = self.queryset.values('type').distinct()
-        resp = []
-        for dev in device:
-            print(dev["type"])
-            resp.append(dev["type"])            
-        return Response(data=resp)
-
-    @action(methods=["GET"], detail=False)
     def alluser_type(self, request):
         query_params = request.GET
         print(query_params['type'])
@@ -204,7 +195,7 @@ class DeviceViewSet(viewsets.ModelViewSet):
         return Response(device.data)    
     
     @action(methods=["POST"], detail=False)
-    def switching(self, request):
+    def switch(self, request):
         req = json.loads(request.body)
         print(req["name"][0])
         print(req["name"][1])
