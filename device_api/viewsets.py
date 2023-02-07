@@ -214,6 +214,7 @@ class DeviceViewSet(viewsets.ModelViewSet):
         device2.save(update_fields=['employee'])
         return Response(data="Success")
 
+
         
 
     
