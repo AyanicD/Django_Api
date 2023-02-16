@@ -1,4 +1,4 @@
-from device_api.models import Employee, Device
+from device_api.models import Employee, Device, Attachment, ChunkedUpload
 from rest_framework import serializers
 
 
@@ -47,3 +47,12 @@ class DetailSerializer(DeviceSerializer):
 
     def get_employee_detail(self, device):
         return EmployeeSerializer(device.employee).data
+
+class AttachmentSerializer(BaseModelSerializer):
+    class Meta:
+        model = Attachment
+        fields = "__all__"
+class ChunkedUploadSerialiser(BaseModelSerializer):
+    class Meta:
+        model = ChunkedUpload
+        fields = "__all__"

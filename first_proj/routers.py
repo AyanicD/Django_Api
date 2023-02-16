@@ -1,6 +1,6 @@
-from device_api.routers import BaseRouter, EmployeeRouter, DeviceRouter
+from device_api.routers import BaseRouter, CommonRouter
 
 v1_router = BaseRouter()
 
-v1_router.extend(EmployeeRouter)
-v1_router.extend(DeviceRouter)
+v1_router.extend(CommonRouter)
+
